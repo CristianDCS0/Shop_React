@@ -24,7 +24,7 @@ export default function Home() {
         <>
             <div className="grid grid-cols-[1fr_3fr_1fr] w-screen h-screen items-center">
                 <div className="flex justify-start items-center h-full w-80">
-                    <img src={"/src/assets/10513-gaussian-blur.jpg"} alt="Image" className="h-full dark:brightness-[0.3] dark:grayscale"/>
+                    <img src={"/shop-react-two.vercel.app/10513-gaussian-blur.jpg"} alt="Image" className="h-full dark:brightness-[0.3] dark:grayscale"/>
                 </div>
 
                 <div className="flex flex-col gap-2 justify-center items-center h-screen">

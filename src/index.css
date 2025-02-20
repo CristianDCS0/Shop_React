@@ -7,7 +7,7 @@
 @layer base {
     body {
         /* center content */
-        @apply flex items-center justify-center;
+        /*@apply flex items-center justify-center;*/
         min-height: 100vh;
     }
   :root {

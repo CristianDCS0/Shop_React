@@ -1,32 +1,35 @@
-import {Route, Routes} from "react-router-dom"
+import {Routes, Route} from 'react-router-dom';
+import RoleProtectedRoute from "@/components/RoleProtectedRoute.tsx";
 
-// Importar las vistas a utilizar
-import Home from "@/views/Home/Home"
-// import PostList from "@/views/Posts/PostList.tsx";
-import HomeIndex from "@/views/Home/Homeindex.tsx";
-import HomeDash from "@/views/Home/homeDash.tsx"
-import ProductsList from "@/views/Products/ProductsList.tsx";
-import ProductUpdate from "@/views/Products/ProductUpdate.tsx";
-import LogoutUser from "@/views/Home/LogoutUser.tsx";
+// shadcn
+import DashboardAdmin from '@/views/Dashboard/DashboardAdmin.tsx';
+import Home from "@/views/Home/Home.tsx";
+import Register from "@/views/Auth/Register.tsx";
+import Dashboard from "@/views/Dashboard/Dashboard.tsx";
+import Unauthorized from "@/views/Auth/Unauthorized.tsx";
+import Index from "@/views/Home/Index.tsx";
+import Profile from "@/views/Auth/Profile.tsx";
+import ProductListU from "@/views/Products/Users/ProductListU.tsx";
 
-function App() {
+const App = () => {
     return (
         <Routes>
-            {/* Ruta pública: Login */}
             <Route path="/" element={<Home />} />
-
-            {/* Ruta protegida: Dashboard */}
-            <Route path="/dashboard" element={ <HomeDash /> }>
-                {/* Rutas hijas del Dashboard */}
-                <Route index element={<HomeIndex />} />
-                <Route path="products" element={<ProductsList />} />
-                <Route path="products/:id" element={<ProductUpdate />} />
-                <Route path="logout" element={<LogoutUser />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/unauthorized" element={<Unauthorized />} />
+            <Route path="/dashboard" element={<Dashboard />}>
+                <Route index element={<Index />} />
+                <Route path="products" element={<ProductListU />} />
+                <Route path="profile" element={<Profile />} />
             </Route>
 
-            {/* Otras rutas */}
+            <Route element={<RoleProtectedRoute requiredRole="admin" />}>
+                <Route path="admin" element={<DashboardAdmin />}>
+
+                </Route>
+            </Route>
         </Routes>
-    )
-}
+    );
+};
 
 export default App;

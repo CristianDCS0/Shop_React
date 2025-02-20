@@ -18,7 +18,7 @@ export const useAuthStore = create<AuthStore>()(
 
             register: async(user)=> {
                 try{
-                    await apiexpress.post('users/register', user);
+                    await apiexpress.post('/api/v1/users/register', user);
                 }catch (e){
                     console.log(e);
                 }
@@ -26,7 +26,7 @@ export const useAuthStore = create<AuthStore>()(
 
             login: async (user) => {
                 try{
-                    await apiexpress.post('users/login', user);
+                    await apiexpress.post('/api/v1/users/login', user);
                     useAuthStore.getState().profile();
                 }catch (e) {
                     console.log(e);
@@ -35,7 +35,7 @@ export const useAuthStore = create<AuthStore>()(
 
             profile: async () => {
                 try{
-                    const {data} = await apiexpress.get('users/profile');
+                    const {data} = await apiexpress.get('/api/v1/users/profile');
                     set({ user: data });
                 }catch (e) {
                     console.log(e);
@@ -44,7 +44,7 @@ export const useAuthStore = create<AuthStore>()(
 
             logout: async () => {
                 try{
-                    await apiexpress.get('users/logout');
+                    await apiexpress.get('/api/v1/users/logout');
                     set({ user: null });
                 }catch (e) {
                     console.log(e);

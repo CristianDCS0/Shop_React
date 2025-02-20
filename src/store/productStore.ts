@@ -14,7 +14,7 @@ export const useProductStore = create<ProductStore>()(
             products: [],
             getProducts: async () => {
                 try {
-                    const { data } = await apiexpress.get('/products');
+                    const { data } = await apiexpress.get('/api/v1/products');
                     set({ products: data });
                 } catch (error) {
                     console.error('Error fetching products:', error);
